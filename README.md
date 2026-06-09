@@ -1,1 +1,157 @@
 # Global-Solution---SERS
+Trabalho feito por:
+- Renan Eskildssen - RM571097
+- Lucas Barros - RM571528
+- Murillo Boyadjian Guimarães - RM570774
+
+===========================================================
+SOBRE O CODIGO
+===========================================================
+
+O programa simula um sistema de monitoramento de uma nave espacial ao longo de 6 ciclos.
+Em cada ciclo, o usuário insere 6 leituras dos sistemas da nave.
+O programa classifica cada leitura em um nível de risco e exibe um resumo, medias e analise geral ao final.
+
+===========================================================
+AREA 1 - FUNCOES DE CLASSIFICACAO
+===========================================================
+
+Essas funções recebem o valor lido de cada sistema e retornam uma string com o nível de risco:
+Normal, Atenção ou Critico. Cada função usa estruturas if, elif e else para comparar o valor
+com os limites definidos pelas regras da missão.
+
+classificar_temperatura(temp)
+    Recebe a temperatura em graus Celsius.
+    Critico: 80 ou mais
+    Atencao: abaixo de 15 ou entre 60 e 79.
+    Normal: entre 1 e 59.
+
+classificar_pressao(pres)
+    Recebe a pressao em kPa.
+    Critico: abaixo de 80 ou acima de 120.
+    Atencao: abaixo de 90 ou entre 110 e 120.
+    Normal: entre 90 e 110.
+
+classificar_bateria(bat)
+    Recebe o percentual de carga da bateria.
+    Critico: abaixo de 35%
+    Atencao: entre 69% a 35%.
+    Normal: acima de 70%
+
+classificar_oxigenio(oxi)
+    Recebe o percentual de oxigenio.
+    Critico: abaixo de 84%.
+    Atencao: entre 95% até 85%.
+    Normal: acima de 95% a 100%
+
+classificar_estabilidade(est)
+    Recebe um texto descrevendo a estabilidade do sistema.
+    Critico: instabilidade grave.
+    Atencao: instabilidade leve.
+    Normal: estavel.
+
+classificar_comunicacao(com)
+    Recebe o numero de ciclos sem comunicação.
+    Critico: Abaixo de  50%.
+    Atenção: de 79& a 51%
+    Normal: de 80% a 100%
+
+===========================================================
+AREA 2 - FUNCOES DE PONTUACAO E RISCO
+===========================================================
+
+Essas funções convertem classificações em números para permitir cálculos de risco.
+
+pontos_classificacao(classificacao)
+    Recebe uma string de classificação e retorna um numero inteiro.
+    Critico vale 2 pontos, Atenção vale 1 ponto e Normal vale 0 pontos.
+
+risco_ciclo(ciclo)
+    Recebe um dicionario com os dados de um ciclo.
+    Usa um laco for para percorrer as 7 classificações do ciclo e soma os pontos de cada uma.
+    Retorna o total de pontos do ciclo.
+
+classificacao_missao(pontos)
+    Recebe um numero de pontos e retorna o nível geral da missão.
+    Missão Critica: 8 ou mais pontos.
+    Missão em Atenção: entre 4 e 7 pontos.
+    Missão Estável: 0 a 3 pontos.
+
+===========================================================
+AREA 3 - FUNCAO DE EXIBICAO DO RESUMO
+===========================================================
+
+dados missão(ciclos)
+    Recebe a lista com todos os 6 ciclos.
+    Usa um laco for para percorrer cada ciclo da lista e imprime uma linha no terminal
+    com os valores e classificações de todos os 7 sistemas daquele ciclo.
+
+===========================================================
+REGRAS DE CLASSIFICACAO
+===========================================================
+
+São 6 ciclos de monitoramento, onde cada ciclo tem 7 leituras:
+- Temperatura
+- Pressão
+- Comunicação
+- Bateria
+- Combustível
+- Oxigênio
+- pontuação 
+
+Ao analisar cada sistema, ele e classificado em 3 níveis de risco:
+- Normal
+- Atenção
+- Critico
+
+Temperatura:
+- Normal: 15 graus C a 59 graus C
+- Atenção: maior 60 até 79 graus C
+- Critico: acima que 80 é acionado sistema de emergência
+
+Pressão:
+- Normal: 90 kPa a 120 kPa
+- Atenção: menor que 90 kPa ou de 110 kPa a 120 kPa
+- Critico: menor que 80 kPa ou maior que 120 kPa
+
+Sinal de comunicação:
+- Normal: comunicação estável
+- Atenção: perda de comunicação por 1 ciclo
+- Critico: perda de comunicação por 2 ou mais ciclos
+
+
+Combustível:
+- Normal: nível maior que 69%
+- Atenção: nível entre 36% e 69%
+- Critico: nível menor que 35%
+
+Oxigênio:
+- Normal: nível maior que 30%
+- Atenção: nível entre 20% e 30%
+- Critico: nível menor que 20%
+
+Pontuação:
+- Normal: estavel
+- Atenção: instabilidade leve
+- Critico: instabilidade grave
+===========================================================
+CLASSIFICACAO DO CICLO
+===========================================================
+
+Cada classificação recebe pontos:
+- Normal: 0 pontos
+- Atenção: 1 ponto
+- Critico: 2 pontos
+
+Somando os pontos de cada sistema, obtém-se o risco do ciclo:
+- Missão estável: 0 a 3 pontos - perfeito para usar em trabalhos espaciais
+- Missão em atenção: 4 a 7 pontos - usável, mas precisa de alguns ajustes
+- Missão critica: 8 ou mais pontos - não recomendado
+
+
+
+
+.
+
+
+
